@@ -17,9 +17,9 @@ const Login: React.FC = () => {
       return;
     }
 
-    login(passwordInput);
-
-    history.push('/');
+    if (!login(passwordInput)) {
+      setError("Password doesn't match");
+    }
   };
 
   if (signed) {

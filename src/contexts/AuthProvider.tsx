@@ -10,7 +10,7 @@ export interface ILoginForm {
 export interface IAuthContext {
   signed: boolean;
   token: string | null;
-  login(password: string): void;
+  login(password: string): boolean;
   logout(): void;
 }
 
@@ -22,10 +22,16 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [token, setToken] = useState<string | null>(tokenStorage);
 
 
-  function login(password: string) {
-    if (PASSWORD === password) {
-      setItem('token', generateToken());
+  function login(password: string): boolean {
+    if (PASSWORD !== password) {
+      return false;
     }
+
+    const token = generateToken();
+
+    setToken(token)
+    setItem('token', token);
+    return true;
   }
 
   async function logout() {
