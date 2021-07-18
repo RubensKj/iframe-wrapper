@@ -18,6 +18,8 @@ const Login: React.FC = () => {
     }
 
     login(passwordInput);
+
+    history.push('/');
   };
 
   if (signed) {
