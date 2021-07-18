@@ -31,7 +31,7 @@ const Main: React.FC = () => {
       </header>
       <Card>
         <input onChange={e => debouncedChangeUrlFrame(e.target.value)} defaultValue={urlFrame ? urlFrame : ''} placeholder="Paste the iframe url" />
-        <iframe src={urlFrame ? urlFrame : ''} name="frame" scrolling="no" height="450px" width="100%"></iframe>
+        <iframe title="IFrame Wrapper" src={urlFrame ? urlFrame : ''} name="frame" scrolling="no" height="450px" width="100%"></iframe>
       </Card>
     </Container>
   );
