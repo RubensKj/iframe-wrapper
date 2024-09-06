@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "iFrame Wrapper",
-  description: "Wrap your url into an iFrame. With no ads and not opening links...",
+  description:
+    "Wrap your url into an iFrame. With no ads and not opening links...",
 };
 
 export default function Layout({

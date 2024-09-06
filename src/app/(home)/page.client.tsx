@@ -73,7 +73,7 @@ export function PrimaryContent({
 
     if (!frame) {
       setFrames((frames) => [
-        ...frames.filter((fra) => fra.url !== url),
+        ...frames.filter((framy) => framy.url !== url),
         {
           title: title,
           url: url,
@@ -84,7 +84,7 @@ export function PrimaryContent({
     }
 
     setFrames((frames) => [
-      ...frames.filter((fra) => fra.url !== frame.url),
+      ...frames.filter((framy) => framy.url !== frame.url),
       {
         ...frame,
         title: title,
