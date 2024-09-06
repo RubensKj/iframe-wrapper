@@ -2,12 +2,12 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
-    createContext,
-    Dispatch,
-    ReactNode,
-    SetStateAction,
-    useCallback,
-    useContext,
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useCallback,
+  useContext,
 } from "react";
 import { useLocalStorage } from "usehooks-ts";
 
