@@ -6,6 +6,7 @@ import {
     Dispatch,
     ReactNode,
     SetStateAction,
+    useCallback,
     useContext,
 } from "react";
 import { useLocalStorage } from "usehooks-ts";
@@ -43,9 +44,12 @@ export const FramesProvider = ({ children }: ContextProviderProps) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  function findFrameByUrl(url: string) {
-    return frames.find((frame) => frame.url === url);
-  }
+  const findFrameByUrl = useCallback(
+    (url: string) => {
+      return frames.find((frame) => frame.url === url);
+    },
+    [frames]
+  );
 
   const moveToFrame = (url: string) => {
     const params = new URLSearchParams(searchParams.toString());

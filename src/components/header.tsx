@@ -1,13 +1,12 @@
-import Link from "next/link";
 import { ExportButton, ImportButton } from "./header.client";
 
 export default function Header() {
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b bg-background px-4 sm:h-16 sm:px-6">
-      <Link href="#" className="flex items-center gap-2" prefetch={false}>
+      <a href="/" className="flex items-center gap-2">
         <MountainIcon className="h-6 w-6" />
         <span className="font-semibold">Frame Wrapper</span>
-      </Link>
+      </a>
       <div className="flex items-center gap-2">
         <ImportButton />
         {/* <Dialog>

@@ -21,7 +21,44 @@ export default function Main({ url }: { url: string }) {
   );
 }
 
-export function PrimaryContent({ frame }: { frame?: FrameContent }) {
+export function Framer({
+  frame,
+  ...props
+}: React.IframeHTMLAttributes<HTMLIFrameElement> & {
+  frame?: FrameContent;
+  target?: string;
+}) {
+  if (!frame) {
+    return (
+      <div className="w-full h-full flex flex-col justify-center items-center gap-4">
+        <div className="flex flex-col justify-center items-center gap-2 text-muted-foreground text-opacity-35">
+          <TrafficCone />
+          <p className="text-sm uppercase font-extrabold mt-2">
+            Frame not found
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <iframe
+      src={frame.url}
+      allow="fullscreen"
+      className="w-full h-full"
+      sandbox="allow-scripts allow-same-origin"
+      {...props}
+    />
+  );
+}
+
+export function PrimaryContent({
+  frame: frameParam,
+}: {
+  frame?: FrameContent;
+}) {
+  const [frame] = useState<FrameContent | undefined>(frameParam);
+
   const [isEditing, setIsEditing] = useState(false);
   const [isEditingUrl, setIsEditingUrl] = useState(false);
   const [title, setTitle] = useState(
@@ -138,36 +175,5 @@ export function PrimaryContent({ frame }: { frame?: FrameContent }) {
         Click into the text edit the values
       </span>
     </div>
-  );
-}
-
-export function Framer({
-  frame,
-  ...props
-}: React.IframeHTMLAttributes<HTMLIFrameElement> & {
-  frame?: FrameContent;
-  target?: string;
-}) {
-  if (!frame) {
-    return (
-      <div className="w-full h-full flex flex-col justify-center items-center gap-4">
-        <div className="flex flex-col justify-center items-center gap-2 text-muted-foreground text-opacity-35">
-          <TrafficCone />
-          <p className="text-sm uppercase font-extrabold mt-2">
-            Frame not found
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <iframe
-      src={frame.url}
-      allow="fullscreen"
-      className="w-full h-full"
-      sandbox="allow-scripts allow-same-origin"
-      {...props}
-    />
   );
 }

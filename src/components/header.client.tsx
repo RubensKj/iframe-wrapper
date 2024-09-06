@@ -40,6 +40,7 @@ export function ImportButton({
         className
       )}
       onClick={exportToClipboard}
+      disabled
       {...props}
     >
       <UploadIcon className="h-4 w-4" />
