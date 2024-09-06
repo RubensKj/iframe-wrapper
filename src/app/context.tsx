@@ -63,7 +63,7 @@ export const FramesProvider = ({ children }: ContextProviderProps) => {
     const paramUrl = searchParams.get("url");
 
     if (paramUrl === url) {
-      router.push("/");
+      window.location.href = "/";
     }
   };
 
