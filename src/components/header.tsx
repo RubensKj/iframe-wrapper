@@ -1,4 +1,4 @@
-import { ExportButton, ImportButton } from "./header.client";
+import { ExportButton, ImportButton, ThemeButton } from "./header.client";
 
 export default function Header() {
   return (
@@ -9,24 +9,8 @@ export default function Header() {
       </a>
       <div className="flex items-center gap-2">
         <ImportButton />
-        {/* <Dialog>
-        <DialogTrigger asChild>
-BUTTON HERE
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Import Data</DialogTitle>
-            <DialogDescription>Paste your data into the textarea below.</DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <Textarea placeholder="Enter your data here..." className="h-40 resize-none" />
-          </div>
-          <DialogFooter>
-            <Button type="submit">Import</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog> */}
         <ExportButton />
+        <ThemeButton />
       </div>
     </header>
   );

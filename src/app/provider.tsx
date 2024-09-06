@@ -1,5 +1,6 @@
 "use client";
 
+import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";
 import { FramesProvider } from "./context";
 
@@ -8,7 +9,14 @@ export default function Provider({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <Suspense>
-      <FramesProvider>{children}</FramesProvider>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="dark"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <FramesProvider>{children}</FramesProvider>
+      </ThemeProvider>
     </Suspense>
   );
 }

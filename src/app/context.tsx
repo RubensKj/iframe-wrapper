@@ -16,6 +16,11 @@ export interface FrameContent {
   url: string;
 }
 
+interface Importation {
+  success: boolean;
+  error?: string;
+}
+
 interface FrameContextType {
   frames: FrameContent[];
   setFrames: Dispatch<SetStateAction<FrameContent[]>>;
@@ -24,6 +29,7 @@ interface FrameContextType {
   removeByUrl: (url: string) => void;
   clear: () => void;
   exportToClipboard: () => void;
+  importFrames: (jsonData: string) => Importation;
 }
 
 export const FrameContext = createContext<FrameContextType>(
@@ -71,6 +77,29 @@ export const FramesProvider = ({ children }: ContextProviderProps) => {
     navigator.clipboard.writeText(JSON.stringify(frames));
   };
 
+  const importFrames = (
+    jsonData: string
+  ): {
+    success: boolean;
+    error?: string;
+  } => {
+    try {
+      const importData = JSON.parse(jsonData) as FrameContent[];
+
+      setFrames(importData);
+
+      return {
+        success: true,
+      };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      return {
+        success: false,
+        error: err.message,
+      };
+    }
+  };
+
   return (
     <FrameContext.Provider
       value={{
@@ -81,6 +110,7 @@ export const FramesProvider = ({ children }: ContextProviderProps) => {
         removeByUrl,
         clear: removeValue,
         exportToClipboard,
+        importFrames,
       }}
     >
       {children}
