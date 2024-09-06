@@ -166,6 +166,7 @@ export function Framer({
       src={frame.url}
       allow="fullscreen"
       className="w-full h-full"
+      sandbox="allow-scripts allow-same-origin"
       {...props}
     />
   );
